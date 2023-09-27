@@ -1,15 +1,12 @@
 import { SVGProps, Ref, forwardRef, memo } from 'react'
 const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" ref={ref} {...props}>
-    <g clipPath="url(#a)">
-      <path
-        fill="var(--color-warning-300)"
-        d="M11.7 14h-.3L8 12l-3.4 2a.7.7 0 0 1-1-.7l.7-3.7-2.7-2.7a.7.7 0 0 1-.2-.7.7.7 0 0 1 .5-.4L5.7 5l1.7-3.4a.7.7 0 0 1 1.2 0L10.3 5l3.8.6a.7.7 0 0 1 .5.4.7.7 0 0 1-.1.7l-2.8 2.7.7 3.7a.7.7 0 0 1-.3.7l-.4.1Z"
-      />
+    <g fill="var(--color-light-100)" clipPath="url(#a)">
+      <path d="M12.7 13.3H3.3a.7.7 0 1 0 0 1.4h9.4a.7.7 0 0 0 0-1.4ZM3.3 12l2.9-.3c.3 0 .6-.1.8-.3l6-6a1.3 1.3 0 0 0 0-1.8l-2-1.9a1.3 1.3 0 0 0-1.8 0l-6 6c-.2.2-.3.5-.3.8l-.3 2.8a.7.7 0 0 0 .6.7Zm6.9-9.3L12 4.5l-1.3 1.3L8.9 4l1.3-1.3Zm-6 6L8 4.8l1.8 1.8-3.7 3.7-2 .2.1-2Z" />
     </g>
     <defs>
       <clipPath id="a">
-        <path fill="#fff" d="M0 0h16v16H0z" />
+        <path fill="var(--color-light-100)" d="M0 0h16v16H0z" />
       </clipPath>
     </defs>
   </svg>

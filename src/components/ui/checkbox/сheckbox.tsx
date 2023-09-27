@@ -4,6 +4,7 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox'
 
 import s from './checkbox.module.scss'
 
+import { CheckBox } from '@/assets'
 import { Typography } from '@/components'
 
 type CheckboxType = {
@@ -32,7 +33,11 @@ export const Checkbox: FC<CheckboxType> = ({
         onCheckedChange={onChange}
         id={id}
       >
-        {checked && <RadixCheckbox.Indicator className={s.indicator}></RadixCheckbox.Indicator>}
+        {checked && (
+          <RadixCheckbox.Indicator className={s.indicator}>
+            <CheckBox />
+          </RadixCheckbox.Indicator>
+        )}
       </RadixCheckbox.Root>
 
       <Typography as="label" variant="body2" className={`${s.label} ${disabled && s.disabled}`}>

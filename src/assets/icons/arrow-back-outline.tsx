@@ -3,13 +3,13 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =
   <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} fill="none" ref={ref} {...props}>
     <g clipPath="url(#a)">
       <path
-        fill="var(--color-warning-300)"
-        d="M11.7 14h-.3L8 12l-3.4 2a.7.7 0 0 1-1-.7l.7-3.7-2.7-2.7a.7.7 0 0 1-.2-.7.7.7 0 0 1 .5-.4L5.7 5l1.7-3.4a.7.7 0 0 1 1.2 0L10.3 5l3.8.6a.7.7 0 0 1 .5.4.7.7 0 0 1-.1.7l-2.8 2.7.7 3.7a.7.7 0 0 1-.3.7l-.4.1Z"
+        fill="var(--color-light-100)"
+        d="M12.667 7.333H4.76l2.42-2.906a.667.667 0 1 0-1.027-.854l-3.333 4a.794.794 0 0 0-.06.1c0 .034 0 .054-.047.087a.667.667 0 0 0-.046.24c0 .082.016.164.046.24 0 .033 0 .053.047.087a.794.794 0 0 0 .06.1l3.333 4a.668.668 0 0 0 1.027-.854L4.76 8.667h7.907a.667.667 0 1 0 0-1.334Z"
       />
     </g>
     <defs>
       <clipPath id="a">
-        <path fill="#fff" d="M0 0h16v16H0z" />
+        <path fill="var(--color-light-100)" d="M0 0h16v16H0z" />
       </clipPath>
     </defs>
   </svg>
