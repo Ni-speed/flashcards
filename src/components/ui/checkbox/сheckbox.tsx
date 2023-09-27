@@ -4,7 +4,7 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox'
 
 import s from './checkbox.module.scss'
 
-import { CheckBox } from '@/assets'
+import Check from '@/assets/icons/check-box'
 import { Typography } from '@/components'
 
 type CheckboxType = {
@@ -15,34 +15,25 @@ type CheckboxType = {
   label?: string
   id?: string
 }
-export const Checkbox: FC<CheckboxType> = ({
-  checked,
-  onChange,
-  disabled,
-  id,
-  label,
-  required,
-}) => {
+export const Checkbox: FC<CheckboxType> = ({ checked, onChange, disabled, label, required }) => {
   return (
-    <div className={`${s.container} `}>
-      <RadixCheckbox.Root
-        className={`${s.root} ${disabled && s.disabled}`}
-        checked={checked}
-        disabled={disabled}
-        required={required}
-        onCheckedChange={onChange}
-        id={id}
-      >
-        {checked && (
-          <RadixCheckbox.Indicator className={s.indicator}>
-            <CheckBox />
-          </RadixCheckbox.Indicator>
-        )}
-      </RadixCheckbox.Root>
-
-      <Typography as="label" variant="body2" className={`${s.label} ${disabled && s.disabled}`}>
-        {label}
-      </Typography>
-    </div>
+    <Typography variant={'body2'} as={'label'} className={`${s.label} ${disabled && s.disabled}`}>
+      <div className={`${s.buttonWrapper} ${disabled && s.disabled}`}>
+        <RadixCheckbox.Root
+          className={`${s.root} ${disabled && s.disabled}`}
+          checked={checked}
+          disabled={disabled}
+          required={required}
+          onCheckedChange={onChange}
+        >
+          {checked && (
+            <RadixCheckbox.Indicator style={{ width: 24, height: 24 }}>
+              <Check />
+            </RadixCheckbox.Indicator>
+          )}
+        </RadixCheckbox.Root>
+      </div>
+      {label}
+    </Typography>
   )
 }

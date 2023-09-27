@@ -1,92 +1,87 @@
-.container {
+.label {
+  cursor: pointer;
+  user-select: none;
+
   display: flex;
+  gap: 2px;
   align-items: center;
 
-  .root {
-    cursor: pointer;
+  &.disabled {
+    cursor: default;
+    color: var(--color-dark-100);
+  }
+}
 
-    position: relative;
+.root {
+  cursor: pointer;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 18px;
+  height: 18px;
 
-    border: 2px solid var(--color-light-900);
-    border-radius: 0.25rem;
+  background-color: var(--color-dark-700);
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
+  outline: none;
 
-    &:focus {
-      &::before {
-        content: '';
+  &:focus {
+    background-color: var(--color-dark-100);
+  }
 
-        position: absolute;
-        z-index: -1;
+  &[data-state='checked'] {
+    background-color: var(--color-dark-900);
+  }
 
-        width: calc(100% + 25px);
-        height: calc(100% + 25px);
+  &.disabled {
+    cursor: initial;
+    border-color: var(--color-dark-100);
+  }
 
-        background-color: var(--color-dark-100);
-        border-radius: 50%;
-      }
+  &[data-state='checked']:disabled {
+    background-color: var(--color-light-700);
+
+    & :global(#checkbox-background) {
+      fill: var(--color-dark-100) !important;
     }
 
-    &:disabled {
-      background-color: var(--color-dark-100);
-    }
-
-    &:not(:disabled) {
-      &:hover {
-        &::before {
-          content: '';
-
-          position: absolute;
-          z-index: -1;
-
-          width: calc(100% + 1.5625rem);
-          height: calc(100% + 1.5625rem);
-
-          background-color: var(--color-dark-500);
-          border-radius: 50%;
-        }
-      }
-    }
-  }
-
-  .active {
-    background-color: var(--color-light-100);
-
-    .indicator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-dark-900);
-
-      .icon {
-        width: 1.55rem;
-        height: 1.55rem;
-      }
-    }
-  }
-
-  .unActive {
-    background-color: transparent;
-  }
-
-  .checkboxRoot:disabled .checkboxIndicator {
-    color: var(--color-light-700);
-  }
-
-  .label {
-    cursor: pointer;
-    user-select: none;
-    margin-left: 0.75rem;
-  }
-
-  .disabled {
-    p {
-      color: var(--color-light-700);
+    & :global(#checkbox-check) {
+      fill: var(--color-light-700) !important;
     }
   }
 }
+
+.container {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  transition: 0.3s ease-out;
+
+  &:focus-within {
+    background-color: var(--color-dark-100);
+  }
+
+  &:hover:not(.disabled),
+  &:hover .root:not([data-state='checked']) {
+    background-color: var(--color-dark-500);
+  }
+
+  &.disabled {
+    cursor: initial;
+  }
+
+  &:active:not(.disabled) {
+    background-color: var(--color-dark-100);
+  }
+}
+
