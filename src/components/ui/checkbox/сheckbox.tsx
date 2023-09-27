@@ -18,7 +18,7 @@ type CheckboxType = {
 export const Checkbox: FC<CheckboxType> = ({ checked, onChange, disabled, label, required }) => {
   return (
     <Typography variant={'body2'} as={'label'} className={`${s.label} ${disabled && s.disabled}`}>
-      <div className={`${s.buttonWrapper} ${disabled && s.disabled}`}>
+      <div className={`${s.container} ${disabled && s.disabled}`}>
         <RadixCheckbox.Root
           className={`${s.root} ${disabled && s.disabled}`}
           checked={checked}
