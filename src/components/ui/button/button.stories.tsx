@@ -12,7 +12,7 @@ const meta = {
       control: { type: 'radio' },
     },
     fullWidth: {
-      control: {type: 'boolean'}
+      control: { type: 'boolean' },
     },
   },
 } satisfies Meta<typeof Button>
