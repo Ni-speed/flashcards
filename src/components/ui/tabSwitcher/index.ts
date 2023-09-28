@@ -1,1 +1,1 @@
-export * from './TabSwitcher'
+export * from './tab-switcher'
