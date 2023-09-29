@@ -2,11 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Avatar } from '../avatar'
 
+import s from './dropdown.module.scss'
+
 import { Dropdown, DropdownItem, DropdownItemWithIcon } from './'
 
 import { LogOutOutline, PersonOutline } from '@/assets'
 import { Typography } from '@/components'
-import s from 'components/ui/dropdown/dropdown.module.scss'
 
 const meta = {
   title: 'Components/Dropdown',
