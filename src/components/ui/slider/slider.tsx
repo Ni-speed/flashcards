@@ -2,9 +2,9 @@ import { FC } from 'react'
 
 import * as SliderRadix from '@radix-ui/react-slider'
 
-import { Typography } from '..'
-
 import s from './slider.module.scss'
+
+import { Typography } from '@/components'
 
 type SliderProps = SliderRadix.SliderProps & {
   multiple?: boolean
