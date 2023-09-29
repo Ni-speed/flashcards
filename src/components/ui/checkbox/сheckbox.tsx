@@ -8,8 +8,8 @@ import Check from '@/assets/icons/check-box'
 import { Typography } from '@/components'
 
 type CheckboxType = {
-  checked: boolean
-  onChange: (checked: boolean) => void
+  checked?: boolean
+  onChange?: (checked: boolean) => void
   disabled?: boolean
   required?: boolean
   label?: string
