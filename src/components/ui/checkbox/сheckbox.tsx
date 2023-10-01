@@ -9,13 +9,19 @@ import { Typography } from '@/components'
 
 type CheckboxType = {
   checked?: boolean
-  onChange?: (checked: boolean) => void
+  onValueChange?: (checked: boolean) => void
   disabled?: boolean
   required?: boolean
   label?: string
   id?: string
 }
-export const Checkbox: FC<CheckboxType> = ({ checked, onChange, disabled, label, required }) => {
+export const CheckBox: FC<CheckboxType> = ({
+  checked,
+  onValueChange,
+  disabled,
+  label,
+  required,
+}) => {
   return (
     <Typography variant={'body2'} as={'label'} className={`${s.label} ${disabled && s.disabled}`}>
       <div className={`${s.container} ${disabled && s.disabled}`}>
@@ -24,7 +30,7 @@ export const Checkbox: FC<CheckboxType> = ({ checked, onChange, disabled, label,
           checked={checked}
           disabled={disabled}
           required={required}
-          onCheckedChange={onChange}
+          onCheckedChange={onValueChange}
         >
           {checked && (
             <RadixCheckbox.Indicator style={{ width: 24, height: 24 }}>

@@ -22,8 +22,11 @@ import {
   TrashOutline,
   CheckBox,
   NotFound,
+  // @ts-ignore
 } from 'assets/icons'
+// @ts-ignore
 import { IconsList } from 'assets/icons/icons-list.tsx'
+// @ts-ignore
 import StarOutline from 'assets/icons/star-outline.tsx'
 
 const meta = {
