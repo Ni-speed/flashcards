@@ -15,7 +15,16 @@ export type TextFieldProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-  const { search = false, label, disabled, type, error, onClearClick, ...rest } = props
+  const {
+    search = false,
+    label,
+    disabled,
+    type,
+    error,
+    onClearClick,
+    errorMessage,
+    ...rest
+  } = props
 
   const [showPassword, setShowPassword] = useState<boolean>(false)
 
@@ -31,7 +40,9 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
       <Typography variant={'body2'} as={'label'} className={`${s.label} ${disabled && s.disabled}`}>
         {label}
       </Typography>
-      <div className={`${s.inputContainer} ${error ? s.error : ''} ${disabled && s.disabled}`}>
+      <div
+        className={`${s.inputContainer} ${errorMessage ? s.error : ''} ${disabled && s.disabled}`}
+      >
         {search && (
           <span className={s.icon}>
             <SearchOutline />
@@ -62,7 +73,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
         )}
       </div>
       <Typography variant={'caption'} as={'div'} className={s.error}>
-        {error}
+        {errorMessage}
       </Typography>
     </div>
   )
