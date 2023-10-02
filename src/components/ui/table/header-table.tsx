@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
+import { TableElement } from '@/components'
+
 // import { Column } from '@/components/page/packs-list/table-packs-list'
-import { TableElement } from '@/components/ui'
 
 type PropsType = {
   // columns:  Column[]
