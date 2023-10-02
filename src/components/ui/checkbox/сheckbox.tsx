@@ -7,7 +7,7 @@ import s from './checkbox.module.scss'
 import Check from '@/assets/icons/check-box'
 import { Typography } from '@/components'
 
-type CheckboxType = {
+export type CheckboxType = {
   checked?: boolean
   onValueChange?: (checked: boolean) => void
   disabled?: boolean

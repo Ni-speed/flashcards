@@ -2,9 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import s from './table.module.scss'
 
-import { Table, TableBody, TableCell, TableHeader, TableRow } from '.'
+// import { Table, TableBody, TableCell, TableHeader, TableRow } from '.'
 
-import { Grade } from '@/components'
+import { Grade, Table, TableBody, TableCell, TableHeader, TableRow } from '@/components'
 
 const meta = {
   title: 'Components/Table',
