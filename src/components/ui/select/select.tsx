@@ -42,7 +42,7 @@ export const Select: FC<SelectProps> = ({
       >
         <SelectRadix.Trigger asChild className={s.trigger} tabIndex={0}>
           <div>
-            <SelectRadix.Value placeholder={placeholder } />
+            <SelectRadix.Value placeholder={placeholder} />
             <SelectRadix.Icon asChild className={s.icon}>
               <Down />
             </SelectRadix.Icon>

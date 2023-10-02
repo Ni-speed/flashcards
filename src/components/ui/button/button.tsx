@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType } from 'react'
+import { ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
 
 import s from './button.module.scss'
 
@@ -18,3 +18,4 @@ export const Button = <T extends ElementType = 'button'>(props: ButtonProps<T>) 
     />
   )
 }
+export default forwardRef(Button)

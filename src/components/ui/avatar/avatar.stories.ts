@@ -1,20 +1,43 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
-import { Avatar } from './'
+import { Avatar } from '@/components/ui/avatar/avatar.tsx'
 
-const meta = {
+const meta: Meta<typeof Avatar> = {
   title: 'Components/Avatar',
   component: Avatar,
   tags: ['autodocs'],
-} satisfies Meta<typeof Avatar>
+  argTypes: {
+    userName: String,
+  },
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    src: 'https://icon-library.com/images/avatar-icon-images/avatar-icon-images-4.jpg',
-    name: 'Ilmir',
-    size: 96,
+    userName: 'John Doe',
+  },
+}
+
+export const Large: Story = {
+  args: {
+    userName: 'John Doe',
+    size: 'large',
+  },
+}
+
+export const DefaultWithImage: Story = {
+  args: {
+    userName: 'John Doe',
+    image: 'https://placehold.co/36',
+  },
+}
+
+export const LargeWithImage: Story = {
+  args: {
+    userName: 'John Doe',
+    size: 'large',
+    image: 'https://placehold.co/96',
   },
 }

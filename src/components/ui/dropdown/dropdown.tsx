@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, FC, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, FC, forwardRef, ReactNode } from 'react'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
@@ -11,19 +11,21 @@ type DropdownProps = {
   children: ReactNode
 }
 
-export const Dropdown: FC<DropdownProps> = ({ trigger, children }) => {
-  return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild>{trigger}</DropdownMenu.Trigger>
-      <DropdownMenu.Content className={s.content} sideOffset={10} align={'end'}>
-        <div className={s.itemsBlock}>{children}</div>
-        <DropdownMenu.Arrow className={s.arrow_block} asChild>
-          <div className={s.arrow} />
-        </DropdownMenu.Arrow>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
-  )
-}
+export const Dropdown: FC<DropdownProps> = forwardRef<HTMLDivElement, DropdownProps>(
+  ({ trigger, children }) => {
+    return (
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>{trigger}</DropdownMenu.Trigger>
+        <DropdownMenu.Content className={s.content} sideOffset={10} align={'end'}>
+          <div className={s.itemsBlock}>{children}</div>
+          <DropdownMenu.Arrow className={s.arrow_block} asChild>
+            <div className={s.arrow} />
+          </DropdownMenu.Arrow>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
+    )
+  }
+)
 
 export type DropdownItemProps = {
   children?: ReactNode
@@ -45,13 +47,10 @@ export type DropdownItemWithIconProps = Omit<DropdownItemProps, 'children'> & {
   text: string
 } & ComponentPropsWithoutRef<'div'>
 
-export const DropdownItemWithIcon: FC<DropdownItemWithIconProps> = ({
-  icon,
-  disabled,
-  onSelect,
-  text,
-  ...rest
-}) => {
+export const DropdownItemWithIcon: FC<DropdownItemWithIconProps> = forwardRef<
+  HTMLDivElement,
+  DropdownItemWithIconProps
+>(({ icon, disabled, onSelect, text, ...rest }) => {
   return (
     <DropdownMenu.Item
       className={s.item}
@@ -67,4 +66,4 @@ export const DropdownItemWithIcon: FC<DropdownItemWithIconProps> = ({
       </div>
     </DropdownMenu.Item>
   )
-}
+})

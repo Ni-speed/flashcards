@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { Button, TextField } from '@/components'
-import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox.tsx'
+import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/ControlledCheckbox.tsx'
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email'),
