@@ -2,17 +2,12 @@
   border-collapse: collapse;
 
   width: 100%;
-  max-width: 984px;
 
   color: white;
   text-align: start;
 
   border: 1px solid var(--color-dark-500);
   border-radius: var(--border-radius-s);
-}
-
-.head{
-  background-color: var(--color-dark-500);
 }
 
 .th {
@@ -23,7 +18,7 @@
   line-height: var(--line-height-m);
   text-align: start;
 
-
+  background-color: var(--color-dark-500);
 
   & svg {
     position: absolute;
@@ -55,4 +50,3 @@
     background: var(--color-dark-100);
   }
 }
-

@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button, Checkbox, Select, TextField, Typography } from '..'
+// import { Button, Checkbox, Select, TextField, Typography } from '..'
 
-import { Modal } from './'
+// import { Modal } from './'
 
 import { EditOutline, TrashOutline } from '@/assets'
+import { Button, CheckBox, Modal, Select, TextField, Typography } from '@/components'
 
 const meta = {
   title: 'Components/Modal',
@@ -29,7 +30,7 @@ export const AddNewPack: Story = {
     children: (
       <>
         <TextField label="Name Pask" />
-        <Checkbox label="Private pack" />
+        <CheckBox label="Private pack" />
       </>
     ),
   },
@@ -43,7 +44,7 @@ export const EditPack: Story = {
     children: (
       <>
         <TextField label="Name Pask" />
-        <Checkbox label="Private pack" />
+        <CheckBox label="Private pack" />
       </>
     ),
   },
