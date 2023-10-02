@@ -1,0 +1,49 @@
+[33mba4b2c8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: commit: fix babel
+[33m998c1ed[m HEAD@{1}: commit: fix babel
+[33m5841b07[m HEAD@{2}: commit: fix lock
+[33m3ea0b66[m HEAD@{3}: commit: fix4
+[33mff20fed[m HEAD@{4}: commit: fix
+[33m8608fdb[m HEAD@{5}: commit: fix
+[33m7451ab0[m HEAD@{6}: commit: fix 2 bug Table
+[33m02a953e[m HEAD@{7}: commit: fix bug Table
+[33m7f3ffeb[m HEAD@{8}: commit: fix bug for deploy in Vercel
+[33m3e13992[m HEAD@{9}: commit: fix: bug with errorMessage
+[33m623b372[m HEAD@{10}: commit: added Zod validator
+[33mf369e0b[m HEAD@{11}: commit: feat: added login-form components
+[33m592502e[m HEAD@{12}: commit: test commit
+[33mf2b249d[m HEAD@{13}: commit: fix
+[33m9745d73[m HEAD@{14}: commit: feat: DropDown component
+[33m7732ae8[m HEAD@{15}: commit: feat: Pagination component
+[33m837ca96[m HEAD@{16}: commit: feat: Slider component
+[33m67c7c19[m HEAD@{17}: commit: feat: RadioGroup component
+[33md7b492c[m HEAD@{18}: commit: feat: added style & stories for modal
+[33m68b5a30[m HEAD@{19}: commit: feat: added Modal component
+[33m58a97ea[m HEAD@{20}: commit: add: RadixUI Dialog
+[33m02aa253[m HEAD@{21}: commit: feat: added Select component
+[33m2b8f5c1[m HEAD@{22}: commit: refactor: imports bag
+[33m0914cde[m HEAD@{23}: commit: feat: added Table component
+[33m6cd1786[m HEAD@{24}: commit: feat: add TabSwitcher component
+[33mecc8326[m HEAD@{25}: commit: add: Radix Tabs
+[33m1cdda5a[m HEAD@{26}: commit: add: Logo & Button
+[33m413cf03[m HEAD@{27}: commit: feat: added Header props
+[33m5170db5[m HEAD@{28}: commit: fix: Story
+[33m079a7ac[m HEAD@{29}: commit: stories: Add story for TextField
+[33m479381f[m HEAD@{30}: commit: style: Add style for TextField
+[33m4ce61c2[m HEAD@{31}: commit: fix: TextField
+[33m6870c62[m HEAD@{32}: commit: feat: Added Textfield component
+[33mc628bdd[m HEAD@{33}: commit: style: fix class name
+[33m5dd70c2[m HEAD@{34}: commit: fix: Checkbox fixed
+[33m0b818f9[m HEAD@{35}: commit: fix: Icons
+[33mb8e3b57[m HEAD@{36}: commit: add: Icons
+[33m2526a71[m HEAD@{37}: commit: style & stories: added style & stories Checkbox
+[33mc304202[m HEAD@{38}: commit: feat: Checkbox component & instal checkbox from RadixUI
+[33m70e376c[m HEAD@{39}: commit: stories & style: added stories & style for Card component
+[33m19ddf36[m HEAD@{40}: commit: feat: Card component
+[33mf9f531c[m HEAD@{41}: commit: style: Style for Button
+[33mb18beab[m HEAD@{42}: commit: stories & style: Added Stories & Style for Typography
+[33ma104a79[m HEAD@{43}: commit: feat: Typography component
+[33m210f0d0[m HEAD@{44}: commit: fix: added index.ts
+[33m95c5d5f[m HEAD@{45}: commit: feat: Button
+[33m46e3ebd[m HEAD@{46}: commit: feat: Button component
+[33m965e5df[m HEAD@{47}: commit: add: Added Storybook
+[33m0bdaf5d[m HEAD@{48}: commit (initial): init commit
