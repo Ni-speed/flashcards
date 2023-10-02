@@ -111,7 +111,7 @@ export const Table = () => {
           >
             Last Updated {sortTable ? <ArrowDown /> : <ArrowUp />}
           </HeadCell>
-          <HeadCell>Created by</HeadCell>
+          <HeadCell>Created by5</HeadCell>
           <HeadCell></HeadCell>
         </Row>
       </Head>
