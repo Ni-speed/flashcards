@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from '..'
-
-import { Card } from '.'
+import { Button, Card } from '@/components'
 
 const meta = {
   title: 'Components/Card',
@@ -17,10 +15,10 @@ export const CardBlock: Story = {
   args: {
     children: (
       <>
-        <a href="https://www.youtube.com/">Link</a>
-        <Button as={'a'} href="https://www.youtube.com/" variant="primary">
-          Button as link
-        </Button>
+        <Card>
+          Card
+          <Button>Sign out</Button>
+        </Card>
       </>
     ),
   },
