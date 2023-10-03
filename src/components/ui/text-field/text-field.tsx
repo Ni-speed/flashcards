@@ -1,4 +1,11 @@
-import { ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import {
+  KeyboardEvent,
+  ChangeEvent,
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  forwardRef,
+  useState,
+} from 'react'
 
 import s from './text-field.module.scss'
 
@@ -12,6 +19,10 @@ export type TextFieldProps = {
   className?: string
   onClearClick?: () => void
   errorMessage?: string
+  onChangeValue?: (value: string) => void
+  onLeftIconClickHandler?: () => void
+  onRightIconClickHandler?: () => void
+  onEnter?: ComponentPropsWithoutRef<'input'>['onKeyDown']
 } & ComponentPropsWithoutRef<'input'>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
@@ -22,6 +33,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
     type,
     error,
     onClearClick,
+    onChange,
+    onChangeValue,
+    onLeftIconClickHandler,
+    onRightIconClickHandler,
+    onKeyDown,
+    onEnter,
     errorMessage,
     ...rest
   } = props
@@ -34,6 +51,16 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
     onClearClick && typeof rest?.value === 'string' && rest?.value?.length > 0 && search
 
   const finalType = getFinalType(search, type, showPassword)
+  const onChangeValueHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e)
+    onChangeValue?.(e.currentTarget.value)
+  }
+  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      onEnter?.(e)
+    }
+    onKeyDown?.(e)
+  }
 
   return (
     <div className={s.root}>
@@ -54,6 +81,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, re
           className={`${s.input} ${error ? s.error : ''}`}
           type={finalType}
           disabled={disabled}
+          onKeyDown={onKeyPressHandler}
+          onChange={onChangeValueHandler}
           {...rest}
         />
         {isShowPasswordButton && (

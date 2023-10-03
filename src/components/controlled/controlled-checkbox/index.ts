@@ -1,1 +1,1 @@
-export * from './ControlledCheckbox.tsx'
+export * from './controlledCheckbox.tsx'

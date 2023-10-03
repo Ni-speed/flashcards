@@ -2,8 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { Button, TextField } from '@/components'
-import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/ControlledCheckbox.tsx'
+import { Button } from '@/components'
+import { ControlledTextField } from '@/components/controlled'
+import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlledCheckbox.tsx'
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email'),
@@ -30,11 +31,17 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <TextField {...register('email')} label={'email'} errorMessage={errors.email?.message} />
-      <TextField
+      <ControlledTextField
+        {...register('email')}
+        label={'email'}
+        errorMessage={errors.email?.message}
+        control={control}
+      />
+      <ControlledTextField
         {...register('password')}
         label={'password'}
         errorMessage={errors.password?.message}
+        control={control}
       />
       <ControlledCheckbox control={control} name={'rememberMe'} label={'Remember Me'} />
       <Button type="submit">Submit</Button>
