@@ -14,14 +14,22 @@ type Option = {
 export type RadioGroupProps = {
   options?: Option[]
   value?: string
-  onChange?: (e: any) => void
+  onValueChange?: (e: any) => void
   disabled?: boolean
   name?: string
 } & ComponentPropsWithoutRef<'div'>
-export const RadioGroup: FC<RadioGroupProps> = ({ options, className, onChange, disabled }) => {
+export const RadioGroup: FC<RadioGroupProps> = ({
+  options,
+  className,
+  onValueChange,
+  disabled,
+}) => {
   return (
     <form>
-      <RadixRadioGroup.Root className={`${s.radioGroupRoot} ${className}`} onValueChange={onChange}>
+      <RadixRadioGroup.Root
+        className={`${s.radioGroupRoot} ${className}`}
+        onValueChange={onValueChange}
+      >
         {options?.map((el, index) => {
           return (
             <div className={s.itemGroup} key={index}>

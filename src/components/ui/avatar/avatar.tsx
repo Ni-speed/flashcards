@@ -8,7 +8,7 @@ import s from './avatar.module.scss'
 import { Typography } from '@/components'
 export type AvatarProps = {
   userName: string
-  image?: string
+  image?: string // todo Change the prop name to src and correct all places where the Avatar is used
   size?: 'small' | 'large'
 } & ComponentPropsWithoutRef<typeof RadixAvatar.Root>
 

@@ -4,6 +4,8 @@ import { Meta } from '@storybook/react'
 
 import { RadioGroup } from '.'
 
+import { ControlledTextField } from '@/components/controlled'
+
 const options = [
   {
     value: 'Radio Group1',
@@ -46,7 +48,7 @@ export const Default = {
   },
 }
 
-export const DefaultDisabled = {
+export const Disabled = {
   ...Default,
   args: {
     ...Default.args,
