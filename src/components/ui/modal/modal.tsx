@@ -1,4 +1,4 @@
-import { FC, forwardRef, ReactNode, useState } from 'react'
+import { ElementRef, FC, forwardRef, ReactNode, useState } from 'react'
 
 import * as Dialog from '@radix-ui/react-dialog'
 
@@ -16,7 +16,7 @@ type ModalProps = {
   footerBtn: ReactNode
 }
 
-export const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
+export const Modal: FC<ModalProps> = forwardRef<ElementRef<'div'>, ModalProps>(
   ({ trigger, title, children, showCloseBtn = true, footerBtn }) => {
     const [open, setOpen] = useState(false)
 
@@ -25,7 +25,7 @@ export const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
         <Dialog.Trigger
           asChild
           onClick={() => {
-            setOpen(true)
+            setOpen(prevState => !prevState)
           }}
         >
           {trigger}
@@ -51,7 +51,7 @@ export const Modal: FC<ModalProps> = forwardRef<HTMLDivElement, ModalProps>(
                 <Dialog.Close
                   asChild
                   onClick={() => {
-                    setOpen(false)
+                    setOpen(prevState => !prevState)
                   }}
                 >
                   {footerBtn}

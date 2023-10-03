@@ -6,7 +6,7 @@ import Right from '../../../assets/icons/arrow-right.tsx'
 import s from './pagination.module.scss'
 import { usePagination } from './usePagination.ts'
 
-import { Select } from '@/components'
+import { Select, Typography } from '@/components'
 
 export type PaginationProps = {
   count: number
@@ -68,13 +68,17 @@ export const Pagination: FC<PaginationProps> = forwardRef<HTMLDivElement, Pagina
         </div>
         {showPerPageSelect && (
           <div className={s.selectBox}>
-            show
+            <Typography variant={'body2'} as={'span'}>
+              show
+            </Typography>
             <Select
               value={perPage}
               onValueChange={onPerPageChange}
               options={perPageOptions?.map(el => ({ label: `${el}`, value: `${el}` }))}
             />
-            per page
+            <Typography variant={'body2'} as={'span'}>
+              per page
+            </Typography>
           </div>
         )}
       </div>
