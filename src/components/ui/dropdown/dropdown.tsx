@@ -1,69 +1,62 @@
-import { ComponentPropsWithoutRef, FC, forwardRef, ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef, ReactNode, useState } from 'react'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import cn from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import s from './dropdown.module.scss'
+import { dropdownAnimations } from './dropdownMenuAnimations'
 
-import { Typography } from '@/components'
+import { Avatar } from '@/components/ui/avatar'
 
-type DropdownProps = {
-  trigger: ReactNode
+export type DropdownProps = {
   children: ReactNode
-}
+  trigger?: ReactNode
+  align?: 'start' | 'center' | 'end'
+  className?: string
+} & ComponentPropsWithoutRef<typeof DropdownMenu.Content>
 
-export const Dropdown: FC<DropdownProps> = forwardRef<HTMLDivElement, DropdownProps>(
-  ({ trigger, children }) => {
+export const Dropdown = forwardRef<ElementRef<typeof DropdownMenu.Content>, DropdownProps>(
+  ({ children, trigger, align = 'end', className }, ref): JSX.Element => {
+    const [open, setOpen] = useState(false)
+
+    const classNames = {
+      trigger: s.trigger,
+      button: s.button,
+      content: cn(s.content, className),
+      arrow: s.arrow,
+    }
+
     return (
-      <DropdownMenu.Root>
-        <DropdownMenu.Trigger asChild>{trigger}</DropdownMenu.Trigger>
-        <DropdownMenu.Content className={s.content} sideOffset={10} align={'end'}>
-          <div className={s.itemsBlock}>{children}</div>
-          <DropdownMenu.Arrow className={s.arrow_block} asChild>
-            <div className={s.arrow} />
-          </DropdownMenu.Arrow>
-        </DropdownMenu.Content>
+      <DropdownMenu.Root open={open} onOpenChange={setOpen}>
+        <DropdownMenu.Trigger className={classNames.trigger} asChild>
+          {trigger ?? (
+            <button className={classNames.button}>
+              <Avatar size={'small'} userName={'Ilmir Rakhmatullin'} />
+            </button>
+          )}
+        </DropdownMenu.Trigger>
+
+        <AnimatePresence>
+          {open && (
+            <DropdownMenu.Portal forceMount>
+              <DropdownMenu.Content
+                ref={ref}
+                className={classNames.content}
+                align={align}
+                onClick={event => event.stopPropagation()}
+                asChild
+                forceMount
+              >
+                <motion.div animate={open ? 'open' : 'closed'} {...dropdownAnimations.menu}>
+                  <div>{children}</div>
+                  <DropdownMenu.Arrow className={classNames.arrow} />
+                </motion.div>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          )}
+        </AnimatePresence>
       </DropdownMenu.Root>
     )
   }
 )
-
-export type DropdownItemProps = {
-  children?: ReactNode
-  disabled?: boolean
-  onSelect?: () => void
-  className?: string
-}
-
-export const DropdownItem: FC<DropdownItemProps> = ({ children, disabled, onSelect }) => {
-  return (
-    <DropdownMenu.Item className={s.item} disabled={disabled} onSelect={onSelect}>
-      {children}
-    </DropdownMenu.Item>
-  )
-}
-
-export type DropdownItemWithIconProps = Omit<DropdownItemProps, 'children'> & {
-  icon: ReactNode
-  text: string
-} & ComponentPropsWithoutRef<'div'>
-
-export const DropdownItemWithIcon: FC<DropdownItemWithIconProps> = forwardRef<
-  HTMLDivElement,
-  DropdownItemWithIconProps
->(({ icon, disabled, onSelect, text, ...rest }) => {
-  return (
-    <DropdownMenu.Item
-      className={s.item}
-      disabled={disabled}
-      onSelect={onSelect}
-      onClick={event => event.stopPropagation()}
-      asChild
-      {...rest}
-    >
-      <div>
-        <div>{icon}</div>
-        <Typography variant="caption">{text} Очень</Typography>
-      </div>
-    </DropdownMenu.Item>
-  )
-})

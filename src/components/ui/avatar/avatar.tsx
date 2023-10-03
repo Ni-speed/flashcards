@@ -31,7 +31,7 @@ export const Avatar: FC<AvatarProps> = forwardRef<ElementRef<typeof RadixAvatar.
           className={classNames.image}
           src={
             /*image*/ // todo added avatar icon //
-            'https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png'
+            'https://icon-library.com/images/headshot-icon/headshot-icon-17.jpg'
           }
           alt={'awatar'}
         />
