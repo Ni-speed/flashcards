@@ -2,6 +2,10 @@
   cursor: pointer;
   user-select: none;
 
+  display: flex;
+  flex-direction: inherit;
+  justify-content: space-evenly;
+
   width: 100%;
 
   outline: none;
@@ -26,6 +30,6 @@
 }
 
 .itemIcon {
-  width: 1.6rem;
-  height: 1.6rem;
+  //width: 1.6rem;
+  //height: 1.6rem;
 }
