@@ -1,147 +1,76 @@
-import { ComponentProps, FC, useState } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { clsx } from 'clsx'
+import cn from 'classnames'
 
 import s from './table.module.scss'
 
-import { ArrowDown, ArrowUp, Edit, TrashOutline } from '@/assets'
-import Play from '@/assets/icons/play.tsx'
-import { Typography } from '@/components/ui'
+import { Typography } from '@/components'
 
-export type RootProps = ComponentProps<'table'>
+const Root = forwardRef<ElementRef<'table'>, ComponentPropsWithoutRef<'table'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const rootClasses = cn(s.root, className)
 
-export const Root: FC<RootProps> = ({ className, ...rest }) => {
-  const classNames = {
-    table: clsx(className, s.table),
+    return <table ref={ref} className={rootClasses} {...restProps} />
   }
+)
 
-  return <table className={classNames.table} {...rest} />
-}
+const Head = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const headClasses = cn(s.thead, className)
 
-export type HeadProps = ComponentProps<'thead'>
-
-export const Head: FC<HeadProps> = props => {
-  return <thead {...props} />
-}
-
-export type BodyProps = ComponentProps<'tbody'>
-
-export const Body: FC<BodyProps> = props => {
-  return <tbody {...props} />
-}
-
-export type RowProps = ComponentProps<'tr'>
-
-export const Row: FC<RowProps> = ({ className, ...rest }) => {
-  const classNames = {
-    row: clsx(className, s.row),
+    return <thead ref={ref} className={headClasses} {...restProps} />
   }
+)
 
-  return <tr className={classNames.row} {...rest} />
-}
+const Body = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const bodyClasses = cn(s.body, className)
 
-export type HeadCellProps = ComponentProps<'th'>
-
-export const HeadCell: FC<HeadCellProps> = ({ className, ...rest }) => {
-  const classNames = {
-    headCell: clsx(className, s.th),
+    return <tbody ref={ref} className={bodyClasses} {...restProps} />
   }
+)
 
-  return <th className={classNames.headCell} {...rest} />
-}
+const Row = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const rowClasses = cn(s.row, className)
 
-export type CellProps = ComponentProps<'td'>
-
-export const Cell: FC<CellProps> = ({ className, ...rest }) => {
-  const classNames = {
-    cell: clsx(className, s.tableCell),
+    return <tr ref={ref} className={rowClasses} {...restProps} />
   }
+)
 
-  return <td className={classNames.cell} {...rest} />
-}
+const HeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const headCellClasses = cn(s.headCell, className)
 
-export const Empty: FC<ComponentProps<'div'> & { mt?: string; mb?: string }> = ({
-  className,
-  mt = '89px',
-  mb,
-}) => {
-  const classNames = {
-    empty: clsx(className, s.empty),
+    return <th ref={ref} className={headCellClasses} {...restProps} />
   }
+)
 
-  return (
-    <Typography className={classNames.empty} style={{ marginTop: mt, marginBottom: mb }}>
-      Пока тут еще нет данных! :(
-    </Typography>
-  )
-}
+const Cell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const cellClasses = cn(s.cell, className)
 
-type TypeTestData = {
-  id: number
-  name: string
-  cardsNumber: number
-  lastDate: string
-  createdBy: string
-}
+    return <td ref={ref} className={cellClasses} {...restProps} />
+  }
+)
 
-const testData: TypeTestData[] = [
-  { id: 1, name: 'Pack Name', cardsNumber: 4, lastDate: '24.07.2023', createdBy: 'Ivan Ivanov' },
-  { id: 2, name: 'Pack Name', cardsNumber: 4, lastDate: '25.07.2023', createdBy: 'Ivan Ivanov' },
-  { id: 3, name: 'Pack Name', cardsNumber: 4, lastDate: '26.07.2023', createdBy: 'Ivan Ivanov' },
-  { id: 4, name: 'Pack Name', cardsNumber: 4, lastDate: '27.07.2023', createdBy: 'Ivan Ivanov' },
-  { id: 5, name: 'Pack Name', cardsNumber: 4, lastDate: '28.07.2023', createdBy: 'Ivan Ivanov' },
-  { id: 6, name: 'Pack Name', cardsNumber: 4, lastDate: '29.07.2023', createdBy: 'Ivan Ivanov' },
-  { id: 7, name: 'Pack Name', cardsNumber: 4, lastDate: '30.07.2023', createdBy: 'Ivan Ivanov' },
-]
+const Empty = forwardRef<ElementRef<'div'>, ComponentPropsWithoutRef<'div'>>(
+  ({ className, ...restProps }, ref): JSX.Element => {
+    const classNames = {
+      root: cn(s.empty, className),
+      emptyDescription: s.emptyDescription,
+    }
+    const emptyClasses = cn(s.empty, className)
 
-export const Table = () => {
-  const [sortTable, setSortTable] = useState(false)
-  const changeSort = (status: boolean) => setSortTable(status)
+    return (
+      <div ref={ref} className={emptyClasses} {...restProps}>
+        <Typography className={classNames.emptyDescription} variant={'body1'}>
+          This pack is empty. Click add new card to fill this pack
+        </Typography>
+      </div>
+    )
+  }
+)
 
-  return (
-    <Root>
-      <Head>
-        <Row>
-          <HeadCell>Name</HeadCell>
-          <HeadCell>Cards</HeadCell>
-          <HeadCell
-            onClick={() => {
-              changeSort(!sortTable)
-            }}
-          >
-            Last Updated {sortTable ? <ArrowDown /> : <ArrowUp />}
-          </HeadCell>
-          <HeadCell>Created by5</HeadCell>
-          <HeadCell></HeadCell>
-        </Row>
-      </Head>
-      <Body>
-        {testData.map(el => {
-          return (
-            <Row key={el.id}>
-              <Cell>{el.name}</Cell>
-              <Cell>{el.cardsNumber}</Cell>
-              <Cell>{el.lastDate}</Cell>
-              <Cell>{el.createdBy}</Cell>
-              <Cell>
-                <Play />
-                <Edit />
-                <TrashOutline />
-              </Cell>
-            </Row>
-          )
-        })}
-      </Body>
-    </Root>
-  )
-}
-
-export const TableElement = {
-  Root,
-  Head,
-  Body,
-  Row,
-  HeadCell,
-  Cell,
-  Empty,
-}
+export const Table = { Root, Head, Body, Row, HeadCell, Cell, Empty }
+export type TableProps = typeof Table
