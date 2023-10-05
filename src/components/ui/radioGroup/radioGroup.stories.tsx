@@ -4,8 +4,6 @@ import { Meta } from '@storybook/react'
 
 import { RadioGroup } from '.'
 
-import { ControlledTextField } from '@/components/controlled'
-
 const options = [
   {
     value: 'Radio Group1',
