@@ -5,14 +5,9 @@ import { z } from 'zod'
 import s from './signIn.module.scss'
 
 import { Button, Card, Typography } from '@/components'
+import { signInSchema } from '@/components/auth/signIn/singIn.schema.ts'
 import { ControlledTextField } from '@/components/controlled'
 import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlledCheckbox.tsx'
-
-const signInSchema = z.object({
-  email: z.string().email('Please enter a valid email'),
-  password: z.string().min(3, 'Password must be at least 3 characters'),
-  rememberMe: z.boolean().optional().default(false),
-})
 
 type FormValues = z.infer<typeof signInSchema>
 export const SignIn = () => {
@@ -23,6 +18,11 @@ export const SignIn = () => {
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
   })
 
   console.log(errors)
