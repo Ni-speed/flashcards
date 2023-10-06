@@ -1,14 +1,9 @@
-// import { Button } from './components/ui/button'
-
-import { Button } from '@/components'
+import { Router } from '@/router.tsx'
 
 export function App() {
   return (
     <>
-      <div>Hello World</div>
-      <Button as={'a'} href="https://www.youtube.com/">
-        Link
-      </Button>
+      <Router />
     </>
   )
 }
