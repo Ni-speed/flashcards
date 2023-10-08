@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Table } from '@/components'
+import { Table } from '@/components/ui/table/table.tsx'
 
 // import { Column } from '@/components/page/packs-list/table-packs-list'
 
