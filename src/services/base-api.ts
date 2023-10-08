@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+import { GetDecksResponse } from '@/services/types.ts'
+
 export const baseApi = createApi({
   reducerPath: 'baseApi',
   baseQuery: fetchBaseQuery({
@@ -11,7 +13,7 @@ export const baseApi = createApi({
   }),
   endpoints: builder => {
     return {
-      getDecks: builder.query<any, void>({
+      getDecks: builder.query<GetDecksResponse, void>({
         query: () => `v1/decks`,
       }),
     }
