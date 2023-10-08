@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { TableElement } from '@/components'
+import { Table } from '@/components'
 
 // import { Column } from '@/components/page/packs-list/table-packs-list'
 
@@ -24,8 +24,8 @@ export const HeaderTable: FC<PropsType> = () => {
   // }
 
   return (
-    <TableElement.Head>
-      <TableElement.Row>
+    <Table.Head>
+      <Table.Row>
         {/*{columns.map(({ title, sortable, key }) => {*/}
         {/*  return (*/}
         {/*    <TableElement.HeadCell key={key} onClick={handleSort(key, sortable)}>*/}
@@ -36,7 +36,7 @@ export const HeaderTable: FC<PropsType> = () => {
         {/*    </TableElement.HeadCell>*/}
         {/*  )*/}
         {/*})}*/}
-      </TableElement.Row>
-    </TableElement.Head>
+      </Table.Row>
+    </Table.Head>
   )
 }

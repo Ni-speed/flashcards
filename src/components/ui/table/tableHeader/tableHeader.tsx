@@ -51,7 +51,7 @@ export const TableHeader = forwardRef<ElementRef<typeof Table.Head>, Props>(
     return (
       <Table.Head ref={ref} {...restProps}>
         <Table.Row>
-          {columns.map(({ title, key, sortable }) => {
+          {columns.map(({ title, key, sortable }: Column) => {
             const headCellClasses = cn(sortable && s.activeHeadCell)
 
             return (
