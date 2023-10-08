@@ -11,4 +11,17 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const SingIn: Story = {
+  args: {
+    isLoggedIn: false,
+  },
+}
+
+export const LoggedIn: Story = {
+  args: {
+    avatar: 'https://icon-library.com/images/headshot-icon/headshot-icon-17.jpg',
+    name: 'Ilmir',
+    email: 'railmir@gmail.com',
+    isLoggedIn: true,
+  },
+}
