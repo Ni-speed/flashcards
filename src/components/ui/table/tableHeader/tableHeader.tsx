@@ -1,82 +1,76 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
-
-import cn from 'classnames'
+import { ComponentPropsWithoutRef, MouseEventHandler } from 'react'
 
 import s from './tableHeader.module.scss'
 
-import { ArrowDown, ArrowUp } from '@/assets/icons'
-import { Table, Typography } from '@/components'
+import { ArrowDown, ArrowUp } from '@/assets'
+import { TableElements } from '@/components'
+
+export type Sort = {
+  key: string | null
+  direction: 'asc' | 'desc'
+} | null
 
 export type Column = {
   key: string
   title: string
-  sortable?: boolean
+  isSortable?: boolean
 }
 
-export type Sort = {
-  key: string
-  direction: 'asc' | 'desc'
-} | null
+const dataAttributes = {
+  sortable: 'data-sortable',
+  name: 'data-name',
+} as const
 
-type Props = Omit<
-  ComponentPropsWithoutRef<typeof Table.Head> & {
-    columns: Column[]
-    sort?: Sort
+type TableHeaderProps = Omit<
+  ComponentPropsWithoutRef<'thead'> & {
+    columns?: Column[]
     onSort?: (sort: Sort) => void
+    sort?: Sort
   },
   'children'
 >
 
-export const TableHeader = forwardRef<ElementRef<typeof Table.Head>, Props>(
-  ({ columns, sort, onSort, ...restProps }, ref): JSX.Element => {
-    const handleSort = (key: string, sortable?: boolean) => () => {
-      if (!onSort || !sortable) {
-        return
-      }
+export const TableHeader = ({ columns, onSort, sort }: TableHeaderProps) => {
+  const handleSort: MouseEventHandler<HTMLTableRowElement> = e => {
+    if (!(e.target instanceof HTMLTableCellElement)) return
+    const isSortable = e.target.getAttribute(dataAttributes.sortable)
+    const key = e.target.getAttribute(dataAttributes.name)
 
-      if (sort?.key !== key) {
-        return onSort({ key, direction: 'asc' })
-      }
+    if (!onSort || !isSortable) return
 
-      if (sort.direction === 'desc') {
-        return onSort(null)
-      }
+    if (sort?.key !== key) return onSort({ key, direction: 'asc' })
 
-      return onSort({
-        key,
-        direction: sort?.direction === 'asc' ? 'desc' : 'asc',
-      })
-    }
+    if (sort.direction === 'desc') return onSort(null)
 
-    return (
-      <Table.Head ref={ref} {...restProps}>
-        <Table.Row>
-          {columns.map(({ title, key, sortable }: Column) => {
-            const headCellClasses = cn(sortable && s.activeHeadCell)
-
-            return (
-              <Table.HeadCell
-                key={key}
-                className={headCellClasses}
-                onClick={handleSort(key, sortable)}
-              >
-                <Typography className={s.sortCell} variant={'subtitle2'} as="span">
-                  {title}
-                  {sort && sort.key === key && (
-                    <>
-                      {sort.direction === 'asc' ? (
-                        <ArrowUp className={s.sortIcon} />
-                      ) : (
-                        <ArrowDown className={s.sortIcon} />
-                      )}
-                    </>
-                  )}
-                </Typography>
-              </Table.HeadCell>
-            )
-          })}
-        </Table.Row>
-      </Table.Head>
-    )
+    return onSort({
+      key,
+      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
+    })
   }
-)
+
+  return (
+    <thead className={s.root}>
+      <TableElements.Row onClick={handleSort}>
+        {columns?.map(column => {
+          const showSort = column.isSortable && sort && sort.key === column.key
+
+          return (
+            <TableElements.Head
+              {...{
+                [dataAttributes.sortable]: column.isSortable,
+                [dataAttributes.name]: column.key,
+              }}
+              data-sortable={column.isSortable}
+              data-name={column.key}
+              key={column.key}
+              className={s.headCell}
+            >
+              {column.title}{' '}
+              {showSort && <span>{sort.direction === 'asc' ? <ArrowUp /> : <ArrowDown />}</span>}
+            </TableElements.Head>
+          )
+        })}
+      </TableElements.Row>
+    </thead>
+  )
+}

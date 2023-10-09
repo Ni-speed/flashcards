@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
-import { Table } from '@/components'
+import { TableElements } from '@/components'
+import s from '@/components/ui/table/table.module.scss'
 import { useGetDecksQuery } from '@/services/base-api.ts'
 
 type CardTableProps = {}
@@ -8,29 +9,33 @@ export const CardsTable: FC<CardTableProps> = () => {
   const { data } = useGetDecksQuery()
 
   return (
-    <Table.Root>
-      <Table.Head>
-        <Table.Row>
-          <Table.HeadCell>Name</Table.HeadCell>
-          <Table.HeadCell>Cards</Table.HeadCell>
-          <Table.HeadCell>Last Update</Table.HeadCell>
-          <Table.HeadCell>Created by</Table.HeadCell>
-          <Table.HeadCell></Table.HeadCell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
+    <TableElements.Table>
+      <TableElements.Head>
+        <TableElements.Row>
+          <TableElements.HeadCell className={s.headCell}>Name</TableElements.HeadCell>
+          <TableElements.HeadCell className={s.headCell}>Cards</TableElements.HeadCell>
+          <TableElements.HeadCell className={s.headCell}>Last Update</TableElements.HeadCell>
+          <TableElements.HeadCell className={s.headCell}>Created by</TableElements.HeadCell>
+        </TableElements.Row>
+      </TableElements.Head>
+      <TableElements.Body>
         {data?.items.map(deck => {
           return (
-            <Table.Row key={deck.id}>
-              <Table.HeadCell>{deck.name}</Table.HeadCell>
-              <Table.HeadCell>{deck.cardsCount}</Table.HeadCell>
-              <Table.HeadCell>{new Date(deck.updated).toLocaleDateString()}</Table.HeadCell>
-              <Table.HeadCell>{deck.author.name}</Table.HeadCell>
-              <Table.HeadCell></Table.HeadCell>
-            </Table.Row>
+            <TableElements.Row key={deck.id}>
+              <TableElements.HeadCell className={s.tableCell}>{deck.name}</TableElements.HeadCell>
+              <TableElements.HeadCell className={s.tableCell}>
+                {deck.cardsCount}
+              </TableElements.HeadCell>
+              <TableElements.HeadCell className={s.tableCell}>
+                {new Date(deck.updated).toLocaleDateString()}
+              </TableElements.HeadCell>
+              <TableElements.HeadCell className={s.tableCell}>
+                {deck.author.name}
+              </TableElements.HeadCell>
+            </TableElements.Row>
           )
         })}
-      </Table.Body>
-    </Table.Root>
+      </TableElements.Body>
+    </TableElements.Table>
   )
 }

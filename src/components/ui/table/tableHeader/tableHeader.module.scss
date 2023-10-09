@@ -1,19 +1,10 @@
-.activeHeadCell {
+.headCell {
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
 
-  &:hover {
-    background-color: var(--color-dark-100);
-  }
-}
+  padding: 6px 24px;
 
-.sortCell {
-  position: relative;
-}
+  text-align: start;
 
-.sortIcon {
-  position: absolute;
-  top: 50%;
-  right: -1.6rem;
-  transform: translateY(-50%);
+  background-color: var(--color-dark-500);
+  border-bottom: 1px solid var(--color-dark-500);
 }
