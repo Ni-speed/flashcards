@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import { CardsTable } from '@/cards/cards-table.tsx'
-import { useGetDecksQuery } from '@/services/base-api.ts'
+import { useGetDecksQuery } from '@/services/decks'
 
 const publicRoutes: RouteObject[] = [
   {

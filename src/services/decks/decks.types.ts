@@ -14,9 +14,9 @@ export type Deck = {
   id: string
   userId: string
   name: string
-  isPrivate: boolean
+  isPrivate?: boolean
   shots: number
-  cover?: any
+  cover?: string | null
   rating: number
   isDeleted?: any
   isBlocked?: any
@@ -31,3 +31,4 @@ export type GetDecksResponse = {
   pagination: Pagination
   items: Deck[]
 }
+export type CreateDeckArgs = Pick<Deck, 'name' | 'cover' | 'isPrivate'>
