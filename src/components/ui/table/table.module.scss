@@ -1,13 +1,13 @@
-.table {
+table {
   border-collapse: collapse;
   max-width: 1008px;
   border: 1px solid var(--color-dark-500);
 }
 
 .headCell {
-  border: none;
   padding: 6px 24px;
   background-color: var(--color-dark-500);
+  border: none;
 }
 
 .tableCell {
