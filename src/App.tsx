@@ -7,6 +7,7 @@ export function App() {
   return (
     <Provider store={store}>
       <Router />
+      hello
     </Provider>
   )
 }
