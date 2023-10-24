@@ -81,7 +81,7 @@ export const DecksService = baseApi.injectEndpoints({
         }),
         providesTags: ['Decks'],
       }),
-      saveCardGrade: builder.query<any, SaveCardGradeType>({
+      saveCardGrade: builder.mutation<any, SaveCardGradeType>({
         query: ({ id, cardId, grade }) => ({
           url: `/v1/decks/${id}/learn`,
           method: 'POST',
