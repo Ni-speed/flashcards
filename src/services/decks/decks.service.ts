@@ -1,9 +1,11 @@
 import {
   CreateCardResponseType,
   CreateDeckArgs,
+  CreateDeckCardType,
   Deck,
   GetDecksArgs,
   GetDecksResponse,
+  GetPaginatedDeckCardsType,
   GetRandomCard,
   SaveCardGradeType,
   UpdateDeckType,
@@ -51,25 +53,25 @@ export const DecksService = baseApi.injectEndpoints({
         }),
         invalidatesTags: ['Decks'],
       }),
-      // getPaginatedDeckCards: builder.query<
-      //   Omit<GetDecksResponse, 'maxCardsCount'>,
-      //   GetPaginatedDeckCardsType
-      // >({
-      //   query: ({ id, question, ...args }) => ({
-      //     url: `/v1/decks/${id}/cards`,
-      //     method: 'GET',
-      //     params: { question, ...args },
-      //   }),
-      //   providesTags: ['Cards'],
-      // }),
-      // createDeckCard: builder.query<CreateCardResponseType, CreateDeckCardType>({
-      //   query: ({ id, question, answer, ...args }) => ({
-      //     url: `/v1/decks/${id}/cards`,
-      //     method: 'POST',
-      //     body: { question, answer, ...args },
-      //   }),
-      //   invalidatesTags: ['Cards'],
-      // }),
+      getPaginatedDeckCards: builder.query<
+        Omit<GetDecksResponse, 'maxCardsCount'>,
+        GetPaginatedDeckCardsType
+      >({
+        query: ({ id, question, ...args }) => ({
+          url: `/v1/decks/${id}/cards`,
+          method: 'GET',
+          params: { question, ...args },
+        }),
+        providesTags: ['Cards'],
+      }),
+      createDeckCard: builder.mutation<CreateCardResponseType, CreateDeckCardType>({
+        query: ({ id, question, answer, ...args }) => ({
+          url: `/v1/decks/${id}/cards`,
+          method: 'POST',
+          body: { question, answer, ...args },
+        }),
+        invalidatesTags: ['Cards'],
+      }),
 
       getRandomCard: builder.query<CreateCardResponseType, GetRandomCard>({
         query: ({ id, previousCardId }) => ({
