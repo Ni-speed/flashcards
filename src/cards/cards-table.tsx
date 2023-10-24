@@ -13,7 +13,7 @@ export const CardsTable: FC<CardTableProps> = () => {
     <div>
       <Button
         onClick={() => {
-          createDeck({ name: 'Stop3' })
+          createDeck({ name: 'Stop33' })
         }}
       >
         Create deck
